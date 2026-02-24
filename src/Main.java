@@ -12,8 +12,8 @@ public class Main {
         Sala sala1 = new Sala(1,"Aquí es donde van los fuertes y ganadores del hackathon");
         Sala sala2 = new Sala(2,"Sala solo accesible para los flacos");
 
-        miGym = new Gimnasio("1","JavaGym", 30,2);
-        uaxGym = new Gimnasio("1","JavaGym", 30,2);
+        miGym = new Gimnasio("1","JavaGym", 30,2,1);
+        uaxGym = new Gimnasio("1","LucaGym", 30,2,2);
 
         /*
         sb = new StringBuilder();
