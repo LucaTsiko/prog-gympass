@@ -1,14 +1,20 @@
 public class Socio {
-    private final int numSocio;
-    private String nombre;
+    private final int numSocio;     // Numero de socios
+    private String nombre;  // Nombre del Socio
 
 
     public Socio() {
-         numSocio = 10;
+         numSocio = 10; // declaro el numero de socios a 10
+
+    }
+
+    public Socio(int numSocio, String nombre) {
+        this.numSocio = numSocio;
+        this.nombre = nombre;
     }
 
 
-    public int getNumeroSocio(){
+    public int getNumSocio(){
         return numSocio;
     }
 
