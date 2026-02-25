@@ -1,8 +1,8 @@
 public class Gimnasio {
     private String codigo;
     private String nombre;
-    private Socio socios[];
-    private Sala salas[];
+    private Socio listaSocios[];
+    private Sala listaSalas[];
     private int responsableId;
 
     private final int cantidad_Socios;
@@ -27,30 +27,11 @@ public class Gimnasio {
         int posicionLibre = -1;
 
         for (int i = 0; i < cantidad_Socios; i++) {
-            if(socios[i] == null){
+            if(listaSocios[i] == null){
                 posicionLibre = i;
             }
         }
         return posicionLibre;
-    }
-
-    /**
-     * Registramos a un socio en la primera posicion libre si hay y si no se repite el numero de socio.
-     * @param s
-     * @return true si se ha registrado el miembro / false en caso contrario.
-     */
-    private boolean resigtrarSocio(Socio s){
-        boolean socioRegistrado = false;
-        int posicionLibre = devolverPosicionLibre();
-
-        for (int i = 0; i < cantidad_Socios && !socioRegistrado; i++) {
-            if(posicionLibre >= 0 && s.getNumSocio() != socios[i].getNumSocio()){
-                socios[i] = s;
-                socioRegistrado = true;
-
-            }
-        }
-        return socioRegistrado;
     }
 
     /**
@@ -63,7 +44,7 @@ public class Gimnasio {
         boolean miembroBuscado = false;
 
         for (int i = 0; i < cantidad_Socios && seguirBuscando; i++) {
-            if(socios[i].getNumSocio() == numero){
+            if(listaSocios[i].getNumSocio() == numero){
                 seguirBuscando = false;
                 miembroBuscado = true;
             }
@@ -72,8 +53,29 @@ public class Gimnasio {
         return miembroBuscado;
     }
 
-    private Socio expulsarSocio(int numero){
+    /**
+     * Registramos a un socio en la primera posicion libre si hay y si no se repite el numero de socio.
+     * @param s
+     * @return true si se ha registrado el miembro / false en caso contrario.
+     */
+    private boolean resigtrarSocio(Socio s){
+        boolean socioRegistrado = false;
+        int posicionLibre = devolverPosicionLibre();
+        boolean socioDuplicado = buscarMiembroPorNumero(s.getNumSocio());
 
+        if(posicionLibre >= 0 && !socioDuplicado){
+                listaSocios[posicionLibre] = s;
+                socioRegistrado = true;
+
+        }
+
+        return socioRegistrado;
+    }
+
+
+    /**
+    private Socio expulsarSocio(int numero){
+        Socio socio;
         boolean socioExpulsado = false;
 
         if(buscarMiembroPorNumero(numero)){
