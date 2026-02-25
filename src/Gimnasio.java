@@ -37,20 +37,20 @@ public class Gimnasio {
     /**
      * Recorre el array de los socios y busca el que tenga numSocio igual al que se recibe.
      * @param numero
-     * @return true si encuentra al miembro / false en caso contrario.
+     * @return la posicion del socio si lo encuentra / - 1 en caso contrario.
      */
-    private boolean buscarMiembroPorNumero(int numero){
+    private int buscarMiembroPorNumero(int numero){
         boolean seguirBuscando = true;
-        boolean miembroBuscado = false;
+        int posicionSocio = -1;
 
         for (int i = 0; i < cantidad_Socios && seguirBuscando; i++) {
             if(listaSocios[i].getNumSocio() == numero){
                 seguirBuscando = false;
-                miembroBuscado = true;
+                posicionSocio = i;
             }
 
         }
-        return miembroBuscado;
+        return posicionSocio;
     }
 
     /**
@@ -61,9 +61,9 @@ public class Gimnasio {
     private boolean resigtrarSocio(Socio s){
         boolean socioRegistrado = false;
         int posicionLibre = devolverPosicionLibre();
-        boolean socioDuplicado = buscarMiembroPorNumero(s.getNumSocio());
+        int socioDuplicado = buscarMiembroPorNumero(s.getNumSocio());
 
-        if(posicionLibre >= 0 && !socioDuplicado){
+        if(posicionLibre >= 0 && socioDuplicado >= 0){
                 listaSocios[posicionLibre] = s;
                 socioRegistrado = true;
 
@@ -73,25 +73,6 @@ public class Gimnasio {
     }
 
 
-    /**
-    private Socio expulsarSocio(int numero){
-        Socio socio;
-        boolean socioExpulsado = false;
 
-        if(buscarMiembroPorNumero(numero)){
-
-        }
-    }
-        /*
-        for (int i = 0; i < cantidad_Socios && !socioExpulsado; i++) {
-            if(socios[i].getNumSocio() == numero){
-                socios[i] = null;
-                socioExpulsado = true;
-            }
-        }
-        return
-    }
-
-         */
 
 }
