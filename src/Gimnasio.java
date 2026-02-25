@@ -72,7 +72,23 @@ public class Gimnasio {
         return socioRegistrado;
     }
 
+    /**
+     *  Busca al miembro por su numero y se la asgina al socio para eliminarlo del array
+     * @param numero
+     * @return devuelve al socio eliminado / null si no lo ha encontrado
+     */
+    private Socio expulsarSocio(int numero){
+        Socio socio = null;
+        int posicionSocio;
 
+        posicionSocio = buscarMiembroPorNumero(numero);
+
+        if(posicionSocio >= 0){
+            socio = listaSocios[posicionSocio];
+        }
+
+        return socio;
+    }
 
 
 }
