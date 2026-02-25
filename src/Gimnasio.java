@@ -34,6 +34,11 @@ public class Gimnasio {
         return posicionLibre;
     }
 
+    /**
+     * Registramos a un socio en la primera posicion libre si hay y si no se repite el numero de socio.
+     * @param s
+     * @return true si se ha registrado el miembro / false en caso contrario.
+     */
     private boolean resigtrarSocio(Socio s){
         boolean socioRegistrado = false;
         int posicionLibre = devolverPosicionLibre();
@@ -47,4 +52,44 @@ public class Gimnasio {
         }
         return socioRegistrado;
     }
+
+    /**
+     * Recorre el array de los socios y busca el que tenga numSocio igual al que se recibe.
+     * @param numero
+     * @return true si encuentra al miembro / false en caso contrario.
+     */
+    private boolean buscarMiembroPorNumero(int numero){
+        boolean seguirBuscando = true;
+        boolean miembroBuscado = false;
+
+        for (int i = 0; i < cantidad_Socios && seguirBuscando; i++) {
+            if(socios[i].getNumSocio() == numero){
+                seguirBuscando = false;
+                miembroBuscado = true;
+            }
+
+        }
+        return miembroBuscado;
+    }
+
+    private Socio expulsarSocio(int numero){
+
+        boolean socioExpulsado = false;
+
+        if(buscarMiembroPorNumero(numero)){
+
+        }
+    }
+        /*
+        for (int i = 0; i < cantidad_Socios && !socioExpulsado; i++) {
+            if(socios[i].getNumSocio() == numero){
+                socios[i] = null;
+                socioExpulsado = true;
+            }
+        }
+        return
+    }
+
+         */
+
 }
